@@ -40,18 +40,18 @@ class BaseAPIClient(object):
 
 	@staticmethod
 	def _get(url, headers, json_data, content_type):
-		res = APIResponse(requests.get(url, headers=headers), content_type)
+		res = APIResponse(requests.get(url, headers=headers, verify=False), content_type)
 		return res.getData()
 
 	@staticmethod
 	def _post(url, headers, json_data, content_type):
-		res = APIResponse(requests.post(url, headers=headers, json=json_data), content_type)
+		res = APIResponse(requests.post(url, headers=headers, json=json_data, verify=False), content_type)
 		return res.getData()
 
 	def _upload(self, url, headers, json_data, content_type):
 		if 'file_name' not in json_data or 'file_path' not in json_data or 'file_type' not in json_data:
 			raise Exception("Missing file data.")
-		headers = {'API-Key': self.api_key, 
+		headers = {'API-Key': self.api_key,
 			'accept': 'application/json'}
 		if 'X-Client-Request-Id' in json_data:
 			headers['X-Client-Request-Id'] = json_data['X-Client-Request-Id']
@@ -59,18 +59,18 @@ class BaseAPIClient(object):
 		files = {
 			'file': (json_data['file_name'], f, json_data['file_type'])
 		}
-		res = APIResponse(requests.post(url, headers=headers, files=files), content_type)
+		res = APIResponse(requests.post(url, headers=headers, files=files, verify=False), content_type)
 		f.close()
 		return res.getData()
 
 	@staticmethod
 	def _put(url, headers, json_data, content_type):
-		res = APIResponse(requests.put(url,headers=headers,json=json_data), content_type)
+		res = APIResponse(requests.put(url,headers=headers,json=json_data, verify=False), content_type)
 		return res.getData()
 
 	@staticmethod
 	def _delete(url, headers, json_data, content_type):
-		res = APIResponse(requests.delete(url, headers=headers), None)
+		res = APIResponse(requests.delete(url, headers=headers, verify=False), None)
 		return res.getData()
 
 	def call(self, method, local_path, json_data=None, content_type='application/json;charset=utf-8', local_headers=None):
