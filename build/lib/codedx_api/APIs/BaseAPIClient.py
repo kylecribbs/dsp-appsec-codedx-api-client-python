@@ -77,6 +77,7 @@ class BaseAPIClient(object):
 		url = self._compose_url(local_path)
 		headers = self._compose_headers(local_headers)
 		headers['Content-Type'] = content_type
+		headers['accept'] = content_type
 		print(url, headers)
 		return self.commands[method](url, headers, json_data, content_type)
 
