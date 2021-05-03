@@ -87,7 +87,7 @@ class APIResponse(object):
 		self.content_type = content_type
 		self.validate(response)
 		self.status = response.status_code
-		if content_type in ['application/json']:
+		if content_type in ['application/json', 'application/json;charset=utf-8']:
 			self.data = response.json()
 		elif content_type in ['text/csv', 'application/pdf', 'text/xml']:
 			self.data = response.content
