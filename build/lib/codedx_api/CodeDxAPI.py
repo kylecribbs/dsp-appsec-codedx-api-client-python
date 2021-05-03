@@ -25,7 +25,7 @@ class CodeDx(ProjectsAPI.Projects, ReportsAPI.Reports, JobsAPI.Jobs, AnalysisAPI
 	def download_report(self, data, file_name):
 		"""Saves the report in a file."""
 		self.type_check(file_name, str, "Filename")
-		with open(file_name, 'wb') as f:
+		with open(file_name, 'w') as f:
 			f.write(data)
 		return f
 
