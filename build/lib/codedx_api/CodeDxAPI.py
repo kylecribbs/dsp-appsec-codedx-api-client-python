@@ -35,6 +35,7 @@ class CodeDx(ProjectsAPI.Projects, ReportsAPI.Reports, JobsAPI.Jobs, AnalysisAPI
 		while job["status"] != "completed":
 			print(msg)
 			time.sleep(5)
+			print(f"{msg} - Checking again in 5 seconds.")
 			job = self.job_status(job["jobId"])
 		return job
 

@@ -87,12 +87,12 @@ class APIResponse(object):
 		self.content_type = content_type
 		self.validate(response)
 		self.status = response.status_code
-		if content_type == 'application/json;charset=utf-8':
+		if content_type in ['application/json']:
 			self.data = response.json()
 		elif content_type in ['text/csv', 'application/pdf', 'text/xml']:
 			self.data = response.content
 		else:
-			self.data = {'status': 'Success'}
+			self.data = response
 
 	def validate(self, response):
 		if response.status_code > 299:
