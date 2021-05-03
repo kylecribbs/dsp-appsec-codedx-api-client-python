@@ -30,7 +30,7 @@ class CodeDx(ProjectsAPI.Projects, ReportsAPI.Reports, JobsAPI.Jobs, AnalysisAPI
 			try:
 				f.write(json.dumps(data))
 			except:
-				f.write(data)
+				f.write(data.decode("utf-8"))
 		return f
 
 	def wait_for_job(self, job, msg):
