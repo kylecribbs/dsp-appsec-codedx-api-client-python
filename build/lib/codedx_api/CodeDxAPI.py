@@ -34,7 +34,7 @@ class CodeDx(ProjectsAPI.Projects, ReportsAPI.Reports, JobsAPI.Jobs, AnalysisAPI
 		job["status"] = "queued"
 		while job["status"] != "completed":
 			print(msg)
-			time.sleep(1)
+			time.sleep(5)
 			job = self.job_status(job["jobId"])
 		return job
 
