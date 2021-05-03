@@ -42,7 +42,8 @@ class CodeDx(ProjectsAPI.Projects, ReportsAPI.Reports, JobsAPI.Jobs, AnalysisAPI
 		"""Get the project report from Code DX."""
 		self.wait_for_job(job, msg)
 		print("Downloading report...")
-		res = self.job_result(job["jobId"], content_type)
+		print(content_type)
+		res = self.job_result(job["jobId"], accept=content_type)
 		file = self.download_report(res, file_name)
 		return file
 
