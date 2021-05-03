@@ -21,7 +21,7 @@ class Jobs(BaseAPIClient):
 		res = self.call("GET", local_url)
 		return res
 
-	def job_result(self, jid, accept='application/json;charset=utf-8'):
+	def job_result(self, jid, accept='application/xml;charset=utf-8'):
 		"""Get the result of a job."""
 		local_url = '/api/jobs/%s/result' % jid
 		res = self.call("GET", local_url, content_type=accept)

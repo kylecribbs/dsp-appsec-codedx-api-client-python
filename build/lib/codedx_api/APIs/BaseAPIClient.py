@@ -75,9 +75,8 @@ class BaseAPIClient(object):
 
 	def call(self, method, local_path, json_data=None, content_type='application/json;charset=utf-8', local_headers=None):
 		url = self._compose_url(local_path)
-		print(url)
 		headers = self._compose_headers(local_headers)
-		print(headers)
+		print(url, headers)
 		return self.commands[method](url, headers, json_data, content_type)
 
 class APIResponse(object):
