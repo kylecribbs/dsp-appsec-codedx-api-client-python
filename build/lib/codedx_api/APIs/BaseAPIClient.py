@@ -101,8 +101,8 @@ class APIResponse(object):
 			if response.status_code > 499:
 				print(response.content)
 			raise Exception("Error: " + str(response.status_code))
-		if 'Content-Type' in response.headers and response.headers['Content-Type'] != self.content_type:
-			raise Exception("Illegal content type")
+		# if 'Content-Type' in response.headers and response.headers['Content-Type'] != self.content_type:
+		# 	raise Exception("Illegal content type")
 
 	def getData(self):
 		return self.data
