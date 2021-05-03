@@ -40,13 +40,11 @@ class BaseAPIClient(object):
 
 	@staticmethod
 	def _get(url, headers, json_data, content_type):
-		print(url)
 		res = APIResponse(requests.get(url, headers=headers, verify=False), content_type)
 		return res.getData()
 
 	@staticmethod
 	def _post(url, headers, json_data, content_type):
-		print(url)
 		res = APIResponse(requests.post(url, headers=headers, json=json_data, verify=False), content_type)
 		return res.getData()
 
@@ -67,13 +65,11 @@ class BaseAPIClient(object):
 
 	@staticmethod
 	def _put(url, headers, json_data, content_type):
-		print(url)
 		res = APIResponse(requests.put(url,headers=headers,json=json_data, verify=False), content_type)
 		return res.getData()
 
 	@staticmethod
 	def _delete(url, headers, json_data, content_type):
-		print(url)
 		res = APIResponse(requests.delete(url, headers=headers, verify=False), None)
 		return res.getData()
 
