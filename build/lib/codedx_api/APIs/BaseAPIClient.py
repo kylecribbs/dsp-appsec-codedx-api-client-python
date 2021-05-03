@@ -77,6 +77,7 @@ class BaseAPIClient(object):
 		url = self._compose_url(local_path)
 		print(url)
 		headers = self._compose_headers(local_headers)
+		print(headers)
 		return self.commands[method](url, headers, json_data, content_type)
 
 class APIResponse(object):
