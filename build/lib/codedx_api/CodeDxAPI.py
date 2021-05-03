@@ -1,5 +1,6 @@
 from codedx_api.APIs import ProjectsAPI, ReportsAPI, JobsAPI, AnalysisAPI, ActionsAPI, FindingsAPI
 import time
+import json
 
 report_columns = [
 	"projectHierarchy",
@@ -25,8 +26,8 @@ class CodeDx(ProjectsAPI.Projects, ReportsAPI.Reports, JobsAPI.Jobs, AnalysisAPI
 	def download_report(self, data, file_name):
 		"""Saves the report in a file."""
 		self.type_check(file_name, str, "Filename")
-		with open(file_name, 'w') as f:
-			f.write(data)
+		with open(file_name, 'wb') as f:
+			f.write(json.dumps(data))
 		return f
 
 	def wait_for_job(self, job, msg):
