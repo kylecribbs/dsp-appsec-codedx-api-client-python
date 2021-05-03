@@ -27,7 +27,10 @@ class CodeDx(ProjectsAPI.Projects, ReportsAPI.Reports, JobsAPI.Jobs, AnalysisAPI
 		"""Saves the report in a file."""
 		self.type_check(file_name, str, "Filename")
 		with open(file_name, 'w') as f:
-			f.write(json.dumps(data))
+			try:
+				f.write(json.dumps(data))
+			except:
+				f.write(data)
 		return f
 
 	def wait_for_job(self, job, msg):
